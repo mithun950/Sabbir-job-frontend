@@ -17,7 +17,7 @@ const DivisionPage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/info/${divisionName}`);
+      const res = await axios.get(`https://sabbir-job-backend.vercel.app/api/info/${divisionName}`);
       setInfoList(res.data);
     } catch (err) {
       toast.error("Failed to fetch data");
@@ -33,7 +33,7 @@ const DivisionPage = () => {
     if (!newInfo) return toast.error("Please enter some info");
 
     try {
-      await axios.post('http://localhost:5000/api/info', {
+      await axios.post('https://sabbir-job-backend.vercel.app/api/info', {
         division: divisionName,
         text: newInfo,
       });
@@ -48,7 +48,7 @@ const DivisionPage = () => {
   const handleDelete = async () => {
     if (!deletingItem) return;
     try {
-      await axios.delete(`http://localhost:5000/api/info/${deletingItem._id}`);
+      await axios.delete(`https://sabbir-job-backend.vercel.app/api/info/${deletingItem._id}`);
       toast.success("Info deleted successfully!");
       setDeletingItem(null);
       fetchData();
@@ -61,7 +61,7 @@ const DivisionPage = () => {
     e.preventDefault();
     if (!updatedText) return toast.error("Please enter updated text");
     try {
-      await axios.patch(`http://localhost:5000/api/info/${editingItem._id}`, {
+      await axios.patch(`https://sabbir-job-backend.vercel.app/api/info/${editingItem._id}`, {
         text: updatedText,
       });
       toast.success("Info updated successfully!");
